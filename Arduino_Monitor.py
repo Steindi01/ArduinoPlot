@@ -6,6 +6,7 @@ http://stackoverflow.com/questions/1093598/pyserial-how-to-read-last-line-sent-f
 from threading import Thread
 import time
 import serial
+import random
 
 last_received = ''
 def receiving(ser):
@@ -44,7 +45,7 @@ class SerialData(object):
         
     def next(self):
         if not self.ser:
-            return 100 #return anything so we can test when Arduino isn't connected
+            return random.random() #return anything so we can test when Arduino isn't connected
         #return a float value or try a few times until we get one
         for i in range(40):
             raw_line = last_received
